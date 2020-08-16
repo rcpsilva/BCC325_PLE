@@ -131,8 +131,6 @@ class Room(Environment):
 
         lines = self.ax.plot(y, - x + len(self.room[0]) - 1, marker_string, markersize=10)
 
-        # for step in path:
-        #    self.ax.plot(step[1], len(self.room[0]) - 1 - step[0], marker_string, markersize=10)
         self.fig.canvas.draw()
 
         l = lines.pop()
