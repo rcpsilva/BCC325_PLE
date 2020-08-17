@@ -18,13 +18,4 @@ class Agent:
 
     def act(self):
         raise NotImplementedError('act')
-
-
-class Constraint:
-
-    def __init__(self, scope, condition):
-        self.scope = scope
-        self.condition = condition
-
-    def apply(self):
-        raise NotImplementedError('apply')
+    
