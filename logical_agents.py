@@ -4,30 +4,38 @@ class LogicalAgent():
         self.KB = KB
 
     # TODO
-    def top_down(self,query,indent=''):
+    def bottom_up(self):
+        ''' Implements the botton up proof strategy and returns all the logical consequence odf the KB
+
+        Returns:
+            A list with all the logical consequences of KB
+        '''
+        pass
+
+    # TODO
+    def top_down(self,query):
+        '''Implements the top down proof strategy. Given a query (the atom that it wants to prove) 
+        it returns True if the query is a consequence of the knowledge base. 
+        
+        Args:
+            querry: The atom that should be proved
+
+        Returns: 
+            True if the query is a logical consequence of KB, False otherwise
+
+        '''
+        
         pass
     
     # TODO
-    def bottom_up(self):
+    def explain(self,g):
+        '''Implements the process of abductions. It tries to explain the atoms  in the list g using
+         the assumable in KB.
+
+        Args:
+            g: A set of atoms that should be explained
+        
+        Returns:
+            A list of explanation for the atoms in g
+        '''
         pass
-
-    def explain(self,g,assumed = set()):
-    
-        if g:
-            selected = g[0]
-            if selected in self.KB.assumables:
-                return self.explain(g[1:],assumed|{selected})
-            else:
-                return [a 
-                        for cl in self.KB.clauses_for_atom(selected)
-                        for a in self.explain(cl.body+g[1:],assumed)
-                        ]
-                       
-        return [assumed]
-
-
-def yes(ans):
-  return ans.lower() in ['yes','yes.','y','y.','sim','sim.','s','s.']
-
-def ask_askables(kb):
-  return [at.atom for at in kb.askables if yes(input('Is ' + at.atom + ' true?'))]
